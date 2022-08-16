@@ -1,4 +1,6 @@
 package com.example.ecommercebackend.user.service;
+import com.example.ecommercebackend.common.ApiResponse;
+import com.example.ecommercebackend.dto.LoginDto;
 import com.example.ecommercebackend.dto.UserDto;
 import com.example.ecommercebackend.user.model.Users;
 import com.example.ecommercebackend.user.repository.UserRepository;
@@ -37,16 +39,6 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public Users login(UserDto userDto, Users user) throws Exception {
-        Optional<Users> userLogin = Optional.ofNullable(userRepository.findByEmail(user.getEmail()));
-        if(userLogin.isPresent()) {
-            if(user.getPassword().equals(userDto.getPassword())){
-                return userRepository.findByEmail(userDto.getEmail());
-            } else throw new Exception("Incorrect password.");
-        }
-        else throw new Exception("User not found.");
-    }
-
     //public Optional<Product> getProductByID(Long id) { return productrepository.findById(id); }
 
     public void deleteUserByID(Long id) {
@@ -61,6 +53,29 @@ public class UserService {
         }else{
             throw new Exception("User not found.");
         }
+    }
+
+    /*public Users login(UserDto userDto, Users user) throws Exception {
+        Optional<Users> userLogin = Optional.ofNullable(userRepository.findByEmail(user.getEmail()));
+        if(userLogin.isPresent()) {
+            if(user.getPassword().equals(userDto.getPassword())){
+                return userRepository.findByEmail(userDto.getEmail());
+            } else throw new Exception("Incorrect password.");
+        }
+        else throw new Exception("User not found.");
+    }*/
+
+    public ApiResponse login(LoginDto loginDto) {
+        //User user = userDao.findByUsername(loginDto.getUsername());
+        Users user = userRepository.findByEmail(loginDto.getEmail());
+        if(user == null) {
+            return new ApiResponse(false, "Invalid email address.");
+        }
+        if(!user.getPassword().equals(loginDto.getPassword())){
+            return new ApiResponse(false, "Incorrect password, please try again.");
+        }
+        return new ApiResponse(true, "Login success") ;
+
     }
 }
 

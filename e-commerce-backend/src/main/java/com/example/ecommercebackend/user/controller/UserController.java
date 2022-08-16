@@ -1,6 +1,7 @@
 package com.example.ecommercebackend.user.controller;
 
 import com.example.ecommercebackend.common.ApiResponse;
+import com.example.ecommercebackend.dto.LoginDto;
 import com.example.ecommercebackend.dto.UserDto;
 import com.example.ecommercebackend.product.model.Product;
 import com.example.ecommercebackend.user.model.Users;
@@ -45,8 +46,9 @@ public class UserController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    /*
     @PostMapping ("/login")
-    public ApiResponse login(@RequestParam String email, UserDto userDto, Users user) {
+    public ApiResponse login(@RequestBody UserDto userDto) {
         try {
             userService.login(userDto, user);
         } catch (Exception e) {
@@ -54,7 +56,13 @@ public class UserController {
         }
 
         return new ApiResponse(true, "Successfully logged in.");
+    }*/
+
+    @PostMapping("/login")
+    public ApiResponse login(@RequestBody LoginDto loginDto){
+        return userService.login(loginDto);
     }
+
 
     @DeleteMapping("/deleteUserByID/{id}")
     public ResponseEntity deleteUserByID(@PathVariable Long id) {

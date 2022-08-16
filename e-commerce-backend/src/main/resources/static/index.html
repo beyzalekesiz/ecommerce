@@ -32,10 +32,10 @@
 <div class="sign-in container">
     <h1>Login</h1>
     <label for="email"><b>Email</b></label>
-    <input class="email" placeholder="Enter Email" name="email"  required>
+    <input id="lgn_email" placeholder="Enter Email" name="email"  required>
     <br> <br>
     <label for="password"><b>Password</b></label>
-    <input class="password" placeholder="Enter Password" name="psw"  required>
+    <input id="lgn_password" placeholder="Enter Password" name="password"  required>
     <br> <br>
     <div class="container submit">
         <button type="submit" class="loginbtn" onclick="onClick=getUser()">Login</button>
@@ -76,38 +76,34 @@
     }
 
     function getUser() {
-        var email = document.getElementsByClassName("email")
-        var password = document.getElementsByClassName("password").value;
+        let email = document.getElementById("lgn_email");
+        let password = document.getElementById("lgn_password");
 
         const loginuser = {
-            "email": email,
-            "password":password
-        };
-        console.log(loginuser)
-
-
-
+            "email" : email,
+            "password" : password
+        }
 
         fetch('http://localhost:8080/users/login', {
-            method: 'GET',
+            method: 'POST',
                 headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(loginuser),
         })
+
             .then((response) => response.json())
             .then((data) => {
                 console.log('Success:', loginuser);
+                alert("You have successfully logged in.");
 
             })
             .catch((error) => {
                 console.error('Error:', error);
+                alert("Incorrect password or email.");
+            }
+            );
 
-            });
-        /* (email== "email"&& password == "password")
-            alert("You have successfully logged in.");
-        else
-        alert("Your email or password is incorrect.")*/
 
 
     }
