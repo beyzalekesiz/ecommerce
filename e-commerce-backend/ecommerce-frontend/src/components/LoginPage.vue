@@ -7,17 +7,26 @@
     <label>Password:</label> &nbsp;
     <input type = "password" required v-model="password"> <br><br>
 
-    <!--
-    <div class="submit" type="button">
+   <!-- <div class="submit" type="button">
       <button>Submit
       </button>
     </div> <br><br> -->
 
-    <v-btn class="submit" @click = "submitLogin">
-      <div v-if="isLogin" >
+    <v-btn
+        class="mr-4"
+        type="submit"
+        @click = "submitLogin"
+    >
 
+      <div v-if="isLogin" v-bind:style="{ 'background-color': 'red' }">
+        <router-link class="mr-4"  type="submit" tag="button" to="/">Submit</router-link>
       </div>
+
     </v-btn>
+
+    <div v-if="!isLogin">
+      <p>Password or email is invalid!</p>
+    </div>
 
     <p>Email: {{ email }}</p>
     <p>Password: {{ password }}</p>
@@ -28,7 +37,6 @@
 <script>
 import axios from "axios";
 //import router from "@/router";
-//import router from "@/router";
 
 export default {
   name: "LoginPage",
@@ -36,22 +44,19 @@ export default {
     return {
       email: '',
       password: '',
-      isLogin: false
+      isLogin:false
     }
   },
 
   methods: {
     async submitLogin() {
-      const userInfo = {
+
+      await axios.post('http://localhost:8080/users/login', {
         email: this.email,
         password: this.password
-      }
-      await axios.post('http://localhost:8080/users/login', {userInfo})
+      })
           .then(res => this.isLogin = res.data.success);
       console.log(this.isLogin);
-
-
-
     }
 
   }

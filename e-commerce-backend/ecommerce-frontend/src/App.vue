@@ -12,6 +12,7 @@
 </template>
 
 <script>
+
 //import Toolbar from './components/ToolBar'
 //import RegisterPage from "@/components/RegisterPage";
 //import HomeView from "@/views/HomeView";

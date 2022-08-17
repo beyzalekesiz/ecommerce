@@ -46,6 +46,7 @@ public class UserController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    /*
     @CrossOrigin(origins = "*")
     @PostMapping ("/login")
     public ApiResponse login(LoginDto loginDto) {
@@ -56,12 +57,12 @@ public class UserController {
         }
 
         return new ApiResponse(true, "Successfully logged in.");
-    }
-/*
+    }*/
+
     @PostMapping("/login")
     public ApiResponse login(@RequestBody LoginDto loginDto){
         return userService.login(loginDto);
-    }*/
+    }
 
 
     @DeleteMapping("/deleteUserByID/{id}")

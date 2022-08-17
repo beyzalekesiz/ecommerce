@@ -55,6 +55,7 @@ public class UserService {
         }
     }
 
+    /*
     public Users login(LoginDto loginDto) throws Exception {
         Users user = userRepository.findByEmail(loginDto.getEmail());
         if(user != null) {
@@ -63,8 +64,8 @@ public class UserService {
             } else throw new Exception("Incorrect password.");
         }
         else throw new Exception("User not found.");
-    }
-/*
+    } */
+
     public ApiResponse login(LoginDto loginDto) {
         //User user = userDao.findByUsername(loginDto.getUsername());
         Users user = userRepository.findByEmail(loginDto.getEmail());
@@ -76,7 +77,7 @@ public class UserService {
         }
         return new ApiResponse(true, "Login success");
 
-    } */
+    }
 }
 
 

@@ -7,6 +7,8 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import RegisterPage from "@/components/RegisterPage";
 import LoginPage from "@/components/LoginPage";
+//import createPersistedState from "vuex-persistedstate";
+//import auth from './index';
 
 Vue.use(VueRouter)
 
@@ -38,6 +40,7 @@ const router = new VueRouter({
   routes
 })
 
-export default router
+export default router;
+
 
 
