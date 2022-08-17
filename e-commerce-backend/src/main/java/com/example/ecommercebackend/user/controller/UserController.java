@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin("*") //!!!!
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
@@ -46,22 +46,22 @@ public class UserController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    /*
+    @CrossOrigin(origins = "*")
     @PostMapping ("/login")
-    public ApiResponse login(@RequestBody UserDto userDto) {
+    public ApiResponse login(LoginDto loginDto) {
         try {
-            userService.login(userDto, user);
+            userService.login(loginDto);
         } catch (Exception e) {
             return new ApiResponse(false, "Invalid password.");
         }
 
         return new ApiResponse(true, "Successfully logged in.");
-    }*/
-
+    }
+/*
     @PostMapping("/login")
     public ApiResponse login(@RequestBody LoginDto loginDto){
         return userService.login(loginDto);
-    }
+    }*/
 
 
     @DeleteMapping("/deleteUserByID/{id}")

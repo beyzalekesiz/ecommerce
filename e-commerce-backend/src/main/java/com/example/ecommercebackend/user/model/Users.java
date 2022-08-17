@@ -25,8 +25,6 @@ public class Users {
     @Column(name = "email")
     private String email;
 
-    @Column()
-
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Orders> orders;
 

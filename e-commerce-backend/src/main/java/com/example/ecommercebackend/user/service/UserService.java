@@ -55,16 +55,16 @@ public class UserService {
         }
     }
 
-    /*public Users login(UserDto userDto, Users user) throws Exception {
-        Optional<Users> userLogin = Optional.ofNullable(userRepository.findByEmail(user.getEmail()));
-        if(userLogin.isPresent()) {
-            if(user.getPassword().equals(userDto.getPassword())){
-                return userRepository.findByEmail(userDto.getEmail());
+    public Users login(LoginDto loginDto) throws Exception {
+        Users user = userRepository.findByEmail(loginDto.getEmail());
+        if(user != null) {
+            if(user.getPassword().equals(loginDto.getPassword())){
+                return userRepository.findByEmail(loginDto.getEmail());
             } else throw new Exception("Incorrect password.");
         }
         else throw new Exception("User not found.");
-    }*/
-
+    }
+/*
     public ApiResponse login(LoginDto loginDto) {
         //User user = userDao.findByUsername(loginDto.getUsername());
         Users user = userRepository.findByEmail(loginDto.getEmail());
@@ -74,9 +74,9 @@ public class UserService {
         if(!user.getPassword().equals(loginDto.getPassword())){
             return new ApiResponse(false, "Incorrect password, please try again.");
         }
-        return new ApiResponse(true, "Login success") ;
+        return new ApiResponse(true, "Login success");
 
-    }
+    } */
 }
 
 

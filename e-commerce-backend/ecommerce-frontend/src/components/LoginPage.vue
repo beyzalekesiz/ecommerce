@@ -7,9 +7,18 @@
     <label>Password:</label> &nbsp;
     <input type = "password" required v-model="password"> <br><br>
 
+    <!--
     <div class="submit" type="button">
-      <button>Submit</button>
-    </div> <br><br>
+      <button>Submit
+      </button>
+    </div> <br><br> -->
+
+    <v-btn class="submit" @click = "submitLogin">
+      <div v-if="isLogin" >
+
+      </div>
+    </v-btn>
+
     <p>Email: {{ email }}</p>
     <p>Password: {{ password }}</p>
   </form>
@@ -18,34 +27,31 @@
 
 <script>
 import axios from "axios";
-import router from "@/router";
+//import router from "@/router";
+//import router from "@/router";
 
 export default {
   name: "LoginPage",
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      isLogin: false
     }
   },
 
   methods: {
-    submitLogin() {
-      console.log("Successfully signed in.")
-      console.log('email: ', this.email)
-      alert("Successfully signed in.")
-
-      axios.post('http://localhost:8080/users/login', {
+    async submitLogin() {
+      const userInfo = {
         email: this.email,
         password: this.password
-      })
-          .then(function (response) {
-            console.log(response);
-            router.push('home');
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
+      }
+      await axios.post('http://localhost:8080/users/login', {userInfo})
+          .then(res => this.isLogin = res.data.success);
+      console.log(this.isLogin);
+
+
+
     }
 
   }

@@ -10,7 +10,7 @@
     <label>Password:</label> &nbsp;
     <input type = "password" required v-model="password"> <br><br>
 
-    <div class="terms">
+    <div class="terms"> &nbsp;
       <input type = "checkbox" required v-model="terms">
       &nbsp; <label>Accept terms and conditions</label>
     </div> <br><br>
@@ -59,10 +59,6 @@ export default {
           .catch(function (error) {
             console.log(error);
           })
-    },
-
-    routerToHome() {
-
     },
     mounted() {
 
