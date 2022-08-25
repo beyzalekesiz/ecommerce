@@ -17,7 +17,6 @@
         type="submit"
         @click = "submitLogin"
     >
-
       <div v-if="isLogin" v-bind:style="{ 'background-color': 'red' }">
         <router-link class="mr-4"  type="submit" tag="button" to="/">Submit</router-link>
       </div>

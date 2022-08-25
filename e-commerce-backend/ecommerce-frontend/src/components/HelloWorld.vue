@@ -11,7 +11,13 @@
       <router-link to="/login">
         Sign In
       </router-link>
+      <router-link to="/admin">
+        Admin Panel
+      </router-link>
       <!-- <router-link to="/">HOME </router-link> | -->
+      <router-link to="/category">
+        Categories
+      </router-link>
 
     </v-row>
   </div>

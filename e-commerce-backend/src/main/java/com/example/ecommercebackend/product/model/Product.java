@@ -45,13 +45,15 @@ public class Product implements Serializable {
     private String description;
 
     //@JsonBackReference(value = "product-category")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "products"})
-    @JoinColumn(name = "category_id")
-    private Category category;
+
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "category", "products"})
     @JoinColumn(name = "order_id")
     private Orders order;
+
+    @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
 }

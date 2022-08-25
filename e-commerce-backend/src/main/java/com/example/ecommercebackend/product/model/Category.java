@@ -7,7 +7,9 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,16 +24,17 @@ public class Category implements Serializable {
     @Column(name = "name")
     private String name;
 
-    //@JsonManagedReference(value = "product-category")
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Product> products = new LinkedHashSet<>();
+
+//@JsonManagedReference(value = "product-category")
+
     //@JoinColumn(name="category_id", referencedColumnName = "id")
 
     //@JoinTable(name = "product",
             //joinColumns = {@JoinColumn(name = "category_id", referencedColumnName = "ID")},
       //
     //      inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "ID")})
-
-    private List<Product> products;
 
     //@Override
     //public String toString() { return "abc";}

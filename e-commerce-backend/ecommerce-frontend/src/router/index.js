@@ -7,6 +7,9 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import RegisterPage from "@/components/RegisterPage";
 import LoginPage from "@/components/LoginPage";
+import Admin from "@/views/AdminView";
+import AddCategory from "@/components/AddCategory";
+import CategoryPage from "@/components/CategoryPage";
 //import createPersistedState from "vuex-persistedstate";
 //import auth from './index';
 
@@ -31,9 +34,30 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginPage
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: Admin
+  },
+  {
+    path: '/category',
+    name: 'Category',
+    component: CategoryPage
+  },
+  {
+    path: '/admin/category',
+    name: 'AdminCategory',
+    component: CategoryPage
+  },
+  {
+    path: '/admin/addCategory',
+    name: 'AddCategory',
+    component: AddCategory
   }
-]
 
+
+]
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,

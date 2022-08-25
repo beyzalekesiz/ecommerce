@@ -1,19 +1,19 @@
 <template>
   <div>
-    <ToolBar/>
+    <!--<ToolBar/> -->
     <hello-world/>
   </div>
 </template>
 
 <script>
   import HelloWorld from '../components/HelloWorld'
-  import ToolBar from "@/components/ToolBar";
+  //import ToolBar from "@/components/ToolBar";
 
   export default {
     name: 'HomeView',
 
     components: {
-      ToolBar,
+      //ToolBar,
       HelloWorld,
     },
   }
