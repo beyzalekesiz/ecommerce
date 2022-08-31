@@ -4,6 +4,9 @@
       <button type="button" class="btn btn-primary btn-lg">Add Category</button>
     </router-link>
 
+    <router-link :to="{name : 'AddProduct'}">
+      <button type="button" class="btn btn-primary btn-lg">Add Product</button>
+    </router-link>
   </div>
 
 </template>

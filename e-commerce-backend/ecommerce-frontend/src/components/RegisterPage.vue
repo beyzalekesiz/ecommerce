@@ -74,7 +74,7 @@ export default {
 form{
   max-width: 500px;
   margin: 30px auto;
-  background: antiquewhite;
+  background: cadetblue;
   text-align: left;
   padding: 40px;
   border-radius: 10px;

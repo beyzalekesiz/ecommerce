@@ -1,6 +1,9 @@
 package com.example.ecommercebackend.product.service;
 
+import com.example.ecommercebackend.dto.ProductDto;
+import com.example.ecommercebackend.product.model.Category;
 import com.example.ecommercebackend.product.model.Product;
+import com.example.ecommercebackend.product.repository.CategoryRepository;
 import com.example.ecommercebackend.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +16,24 @@ public class ProductService {
     @Autowired
     private ProductRepository productrepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     public List<Product> listProduct() { return productrepository.findAll(); }
 
     public Optional<Product> getProductByID( Long id) { return productrepository.findById(id); }
 
-    public void addProduct(Product product) {
+    public void addProduct(ProductDto productDto) {
+//        Category category = categoryRepository.findById(1L).get();
+//        product.setCategory(category);
+        Product product = new Product();
+        product.setName(productDto.getName());
+        product.setCategory(product.getCategory());
+        product.setPrice(product.getPrice());
+        product.setDescription(productDto.getDescription());
+        product.setColor(productDto.getColor());
+//        product.setImageURL(productDto.getImageURL());
+        product.setSize(productDto.getSize());
         productrepository.save(product);
     }
 

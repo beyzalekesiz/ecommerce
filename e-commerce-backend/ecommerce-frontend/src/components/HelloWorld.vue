@@ -1,22 +1,35 @@
 <template>
   <div>
-
+    <h1>Welcome</h1> <br>
     <v-row>
-      <router-link to="/about">
+
+      <v-btn>
+      <router-link to="/about"> &nbsp;
         ABOUT
       </router-link>
-      <router-link to="/register">
+      </v-btn>
+
+
+      <router-link to="/register"> &nbsp;
         Sign Up
       </router-link>
-      <router-link to="/login">
+
+
+      <router-link to="/login"> &nbsp;
         Sign In
       </router-link>
-      <router-link to="/admin">
+
+
+      <router-link to="/admin"> &nbsp;
         Admin Panel
       </router-link>
-      <!-- <router-link to="/">HOME </router-link> | -->
-      <router-link to="/category">
+
+      <router-link to="/category"> &nbsp;
         Categories
+      </router-link>
+
+      <router-link to="/product"> &nbsp;
+        Products
       </router-link>
 
     </v-row>

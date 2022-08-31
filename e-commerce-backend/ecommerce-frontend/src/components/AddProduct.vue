@@ -1,56 +1,41 @@
 <template>
-  <div class="submit">
-    <div class="row">
-      <div class="col-12 text-center">
-        <h2 class="pt-3">Add Product</h2>
-      </div>
-    </div>
-    <div class="row">
+  <form @submit.prevent="addProduct">
+    <h1>Add Product</h1> <br><br>
 
-        <form>
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" v-model="name" />
-          </div>
+    <label>Name:</label> &nbsp;
+    <input type = "name" required v-model="name"> <br><br>
 
-          <div class="form-group">
-            <label>Color</label>
-            <input type="text" class="form-control" v-model="color" />
-          </div>
+    <label>Color:</label> &nbsp;
+    <input type = "text"  v-model="color"> <br><br>
 
-          <div class="form-group">
-            <label>Description</label>
-            <input type="text" class="form-control" v-model="description" />
-          </div>
+    <label>Description:</label> &nbsp;
+    <input type = "description" v-model="description"> <br><br>
 
-          <div class="form-group">
-            <label>Image</label>
-            <input type="text" class="form-control" v-model="imageURL" />
-          </div>
+    <label>ImageURL:</label> &nbsp;
+    <input type = "text"  v-model="imageURL"> <br><br>
 
-          <div class="form-group">
-            <label>Price</label>
-            <input type="price" class="form-control" v-model="price" />
-          </div>
+    <label>Price:</label> &nbsp;
+    <input type = "price"  v-model="price"> <br><br>
 
-          <div class="form-group">
-            <label>Size</label>
-            <input type="text" class="form-control" v-model="size" />
-          </div>
+    <label>Size:</label> &nbsp;
+    <input type = "size"  v-model="size"> <br><br>
 
-          <div class="form-group">
-            <label>Category</label>
-            <input type="text" class="form-control" v-model="category" />
-          </div>
+    <div class="selection-handle">
+      <label>Category</label> <br>
+      <select class="form-control" v-model="category" required>
+        <option disabled value="">Select a category</option>-->
+        <option
+            v-for="category of categories" :key="category.id" :value="category.name">{{category.name}}
+        </option>
+      </select>
+    </div> <br>
 
-          <br> <br>
-          <button type="button" class="btn btn-primary" @click="addProduct">
-            Submit
-          </button>
-        </form>
-      </div>
-  </div>
+    <div class="submit" type="button">
+      <button>Add</button>
+    </div> <br><br>
+  </form>
 </template>
+
 
 <script>
 import axios from "axios";
@@ -59,45 +44,62 @@ export default {
   name: "AddProduct",
   data() {
     return {
+      // id: '',
       name: '',
       color: '',
       description: '',
       imageURL: '',
       price: '',
       size: '',
-      category_id: ''
+      categories: [
+      ]
     }
   },
 
   methods: {
-    addProduct() {
+    async getAllCategories() {
+      await axios.get('http://localhost:8080/category/getAllCategories')
+          .then(res => this.categories = res.data)
+          .catch(err =>console.log(err))
+    }
+    ,
+     addProduct: async function() {
+      // console.log(this.id);
       console.log(this.name);
       console.log(this.color);
       console.log(this.description);
       console.log(this.imageURL);
       console.log(this.price);
       console.log(this.size);
-      console.log(this.category_id);
+      console.log(this.category);
 
-      axios.post('http://localhost:8080/product/addProduct', {
-        name: this.name,
-        color: this.color,
-        description: this.description,
-        imageURl: this.imageURL,
-        price: this.price,
-        size: this.size,
-        category_id: this.category_id
+      await axios.post('http://localhost:8080/product/addProduct', {
+        "data": {
+          //id: this.id,
+          name: this.name,
+          color: this.color,
+          description: this.description,
+          imageURl: this.imageURL,
+          price: this.price,
+          size: this.size,
+          category: this.category
+        },
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
-
           .then(function (response) {
             console.log(response);
-            alert("Category added.")
+            alert("Product added.")
           })
           .catch(function (error) {
             console.log(error);
           })
     }
-  }
+  },
+mounted() {
+  this.getAllCategories();
+}
 }
 </script>
 

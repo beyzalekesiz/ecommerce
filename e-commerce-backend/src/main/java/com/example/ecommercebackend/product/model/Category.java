@@ -27,7 +27,7 @@ public class Category implements Serializable {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Product> products = new LinkedHashSet<>();
 
-//@JsonManagedReference(value = "product-category")
+    //@JsonManagedReference(value = "product-category")
 
     //@JoinColumn(name="category_id", referencedColumnName = "id")
 

@@ -1,16 +1,11 @@
 package com.example.ecommercebackend.order.service;
 
-import com.example.ecommercebackend.order.model.OrderLineItems;
 import com.example.ecommercebackend.order.model.Orders;
-import com.example.ecommercebackend.order.repository.LineItemsRepository;
 import com.example.ecommercebackend.order.repository.OrderRepository;
-import com.example.ecommercebackend.product.model.Category;
 import com.example.ecommercebackend.product.model.Product;
-import com.example.ecommercebackend.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Transient;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,9 +14,6 @@ public class OrderService {
 
     @Autowired
     private OrderRepository orderRepository;
-
-    @Autowired
-    private LineItemsRepository lineItemsRepository;
 
 
     public List<Orders> getAllOrders() {

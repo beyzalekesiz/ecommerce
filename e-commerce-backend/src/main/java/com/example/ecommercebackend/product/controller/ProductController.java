@@ -1,5 +1,7 @@
 package com.example.ecommercebackend.product.controller;
 
+import com.example.ecommercebackend.dto.ProductDto;
+import com.example.ecommercebackend.product.model.Category;
 import com.example.ecommercebackend.product.model.Product;
 import com.example.ecommercebackend.product.service.ProductService;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -9,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -34,10 +36,10 @@ public class ProductController {
         return productService.getProductByID(id).get();
     }
 
-
+    @CrossOrigin(origins = "*")
     @PostMapping("/addProduct")
-    public ResponseEntity addProduct(@RequestBody Product product) {
-        productService.addProduct(product);
+    public ResponseEntity addProduct(@RequestBody ProductDto productDto) {
+        productService.addProduct(productDto);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

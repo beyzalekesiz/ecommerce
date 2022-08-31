@@ -1,7 +1,7 @@
 package com.example.ecommercebackend.user.service;
 import com.example.ecommercebackend.common.ApiResponse;
 import com.example.ecommercebackend.dto.LoginDto;
-import com.example.ecommercebackend.dto.UserDto;
+import com.example.ecommercebackend.dto.RegisterDto;
 import com.example.ecommercebackend.user.model.Users;
 import com.example.ecommercebackend.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +28,13 @@ public class UserService {
 
     //public User getUserByID() { return userRepository.findById(id);}
 
-    public void addUser(UserDto userDto) {
+    public void addUser(RegisterDto registerDto) {
 
         Users user = new Users();
 
-        user.setName(userDto.getName());
-        user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
+        user.setName(registerDto.getName());
+        user.setEmail(registerDto.getEmail());
+        user.setPassword(registerDto.getPassword());
 
         userRepository.save(user);
     }
@@ -76,7 +76,6 @@ public class UserService {
             return new ApiResponse(false, "Incorrect password, please try again.");
         }
         return new ApiResponse(true, "Login success");
-
     }
 }
 

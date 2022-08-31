@@ -2,8 +2,7 @@ package com.example.ecommercebackend.user.controller;
 
 import com.example.ecommercebackend.common.ApiResponse;
 import com.example.ecommercebackend.dto.LoginDto;
-import com.example.ecommercebackend.dto.UserDto;
-import com.example.ecommercebackend.product.model.Product;
+import com.example.ecommercebackend.dto.RegisterDto;
 import com.example.ecommercebackend.user.model.Users;
 import com.example.ecommercebackend.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +40,8 @@ public class UserController {
 
     @CrossOrigin(origins = "*")
     @PostMapping("/addUser")
-    public ResponseEntity addUser(@RequestBody UserDto userDto) {
-        userService.addUser(userDto);
+    public ResponseEntity addUser(@RequestBody RegisterDto registerDto) {
+        userService.addUser(registerDto);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

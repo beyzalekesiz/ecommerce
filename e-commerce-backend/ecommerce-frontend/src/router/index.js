@@ -10,6 +10,9 @@ import LoginPage from "@/components/LoginPage";
 import Admin from "@/views/AdminView";
 import AddCategory from "@/components/AddCategory";
 import CategoryPage from "@/components/CategoryPage";
+import AddProduct from "@/components/AddProduct";
+import AdminLogin from "@/components/AdminLogin";
+import ProductPage from "@/components/ProductPage";
 //import createPersistedState from "vuex-persistedstate";
 //import auth from './index';
 
@@ -36,6 +39,12 @@ const routes = [
     component: LoginPage
   },
   {
+    path: '/admin/login',
+    name: 'AdminLogin',
+    component: AdminLogin
+
+  },
+  {
     path: '/admin',
     name: 'admin',
     component: Admin
@@ -46,6 +55,11 @@ const routes = [
     component: CategoryPage
   },
   {
+    path: '/product',
+    name: 'Product',
+    component: ProductPage
+  },
+  {
     path: '/admin/category',
     name: 'AdminCategory',
     component: CategoryPage
@@ -54,7 +68,13 @@ const routes = [
     path: '/admin/addCategory',
     name: 'AddCategory',
     component: AddCategory
+  },
+  {
+    path: '/admin/addProduct',
+    name: 'AddProduct',
+    component: AddProduct
   }
+
 
 
 ]

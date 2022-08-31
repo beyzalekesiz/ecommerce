@@ -14,13 +14,12 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name = "product")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @JsonInclude (JsonInclude.Include.NON_NULL)
 public class Product implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
     @Column(name = "name")
@@ -47,13 +46,20 @@ public class Product implements Serializable {
     //@JsonBackReference(value = "product-category")
 
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "category", "products"})
+//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JsonIgnoreProperties({"hibernateLazyInitializer", "category", "products"})
+//    @JoinColumn(name = "order_id")
+//    private Orders order;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, optional = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "products"})
+    @JoinColumn(name = "category", nullable = false)
+    private Category category;
+
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "order_id")
     private Orders order;
 
-    @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
+
 
 }
