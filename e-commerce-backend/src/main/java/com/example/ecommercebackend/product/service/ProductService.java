@@ -24,15 +24,15 @@ public class ProductService {
     public Optional<Product> getProductByID( Long id) { return productrepository.findById(id); }
 
     public void addProduct(ProductDto productDto) {
-//        Category category = categoryRepository.findById(1L).get();
+        Category category = categoryRepository.findById(productDto.getCategoryID()).get();
 //        product.setCategory(category);
         Product product = new Product();
         product.setName(productDto.getName());
-        product.setCategory(product.getCategory());
+        product.setCategory(category);
         product.setPrice(product.getPrice());
         product.setDescription(productDto.getDescription());
         product.setColor(productDto.getColor());
-//        product.setImageURL(productDto.getImageURL());
+        product.setImageURL(productDto.getImageURL());
         product.setSize(productDto.getSize());
         productrepository.save(product);
     }

@@ -25,7 +25,7 @@
       <select class="form-control" v-model="category" required>
         <option disabled value="">Select a category</option>-->
         <option
-            v-for="category of categories" :key="category.id" :value="category.name">{{category.name}}
+            v-for="category of categories" :key="category.id" :value="category.id">{{category.name}}
         </option>
       </select>
     </div> <br>
@@ -44,7 +44,6 @@ export default {
   name: "AddProduct",
   data() {
     return {
-      // id: '',
       name: '',
       color: '',
       description: '',
@@ -59,12 +58,10 @@ export default {
   methods: {
     async getAllCategories() {
       await axios.get('http://localhost:8080/category/getAllCategories')
-          .then(res => this.categories = res.data)
+          .then(res => this.categories= res.data)
           .catch(err =>console.log(err))
-    }
-    ,
+    },
      addProduct: async function() {
-      // console.log(this.id);
       console.log(this.name);
       console.log(this.color);
       console.log(this.description);
@@ -73,28 +70,30 @@ export default {
       console.log(this.size);
       console.log(this.category);
 
-      await axios.post('http://localhost:8080/product/addProduct', {
-        "data": {
-          //id: this.id,
-          name: this.name,
-          color: this.color,
-          description: this.description,
-          imageURl: this.imageURL,
-          price: this.price,
-          size: this.size,
-          category: this.category
-        },
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-          .then(function (response) {
-            console.log(response);
-            alert("Product added.")
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
+      const product = {
+        name: this.name,
+        color: this.color,
+        description: this.description,
+        imageURl: this.imageURL,
+        price: this.price,
+        size: this.size,
+        categoryID: this.category
+
+       }
+       console.log(product);
+
+      await axios.post('http://localhost:8080/product/addProduct',
+
+           product
+           ,
+       )
+           .then(function (response) {
+             console.log(response);
+             alert("Product added.")
+           })
+           .catch(function (error) {
+             console.log(error);
+           })
     }
   },
 mounted() {

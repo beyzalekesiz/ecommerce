@@ -23,7 +23,6 @@ public class Product implements Serializable {
     @Column(name = "id")
     private Long id;
     @Column(name = "name")
-    @NotNull
     @Basic(optional = false)
     private String name;
     //@NotNull
@@ -39,7 +38,6 @@ public class Product implements Serializable {
     private String color;
     @Column(name = "imageURL")
     private String imageURL;
-    @Nullable
     @Column(name = "description")
     private String description;
 
@@ -53,7 +51,7 @@ public class Product implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, optional = false)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "products"})
-    @JoinColumn(name = "category", nullable = false)
+    @JoinColumn(name = "categoryID", nullable = false)
     private Category category;
 
     @ManyToOne(cascade = CascadeType.REMOVE)

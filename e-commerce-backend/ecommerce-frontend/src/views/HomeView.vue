@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
+  import HelloWorld from '../components/HomePage'
   //import ToolBar from "@/components/ToolBar";
 
   export default {

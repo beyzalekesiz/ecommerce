@@ -21,7 +21,7 @@
 
 <script>
 import axios from "axios";
-import CategoryBox from "@/components/CategoryBox";
+import CategoryBox from "@/components/Category/CategoryBox";
 
 export default {
 

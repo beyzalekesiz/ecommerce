@@ -36,7 +36,7 @@ public class ProductController {
         return productService.getProductByID(id).get();
     }
 
-    @CrossOrigin(origins = "*")
+
     @PostMapping("/addProduct")
     public ResponseEntity addProduct(@RequestBody ProductDto productDto) {
         productService.addProduct(productDto);

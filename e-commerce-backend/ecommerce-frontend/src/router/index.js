@@ -8,11 +8,11 @@ import AboutView from '../views/AboutView.vue'
 import RegisterPage from "@/components/RegisterPage";
 import LoginPage from "@/components/LoginPage";
 import Admin from "@/views/AdminView";
-import AddCategory from "@/components/AddCategory";
-import CategoryPage from "@/components/CategoryPage";
-import AddProduct from "@/components/AddProduct";
+import AddCategory from "@/components/Category/AddCategory";
+import CategoryPage from "@/components/Category/CategoryPage";
+import AddProduct from "@/components/Product/AddProduct";
 import AdminLogin from "@/components/AdminLogin";
-import ProductPage from "@/components/ProductPage";
+import ProductPage from "@/components/Product/ProductPage";
 //import createPersistedState from "vuex-persistedstate";
 //import auth from './index';
 

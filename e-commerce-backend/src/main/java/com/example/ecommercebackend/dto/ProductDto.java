@@ -15,11 +15,10 @@ import java.awt.*;
 public class ProductDto {
 
     private String name;
-    private String category;
+    private Long categoryID;
     private Double price;
     private String description;
     private String color;
-    @Nullable
     private String imageURL;
     private String size;
 //
