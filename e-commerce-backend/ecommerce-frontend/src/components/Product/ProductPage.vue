@@ -1,19 +1,29 @@
 <template>
   <div>
-    <v-list>
-      <v-list-item v-for="product in products" :key="product.name"></v-list-item>
-      <ul>
-        <li v-for="product in products" :key="product.id">
-          <h2>{{product.name}}</h2>
-          <ProductBox :product="product">
-          </ProductBox>
-          <br>
-          <!--        <ul>-->
-          <!--          <li v-for="category in category.name" :key="category.name">{{category.name}}</li>-->
-          <!--        </ul>-->
-        </li>
-      </ul>
-    </v-list>
+  <v-item-group mandatory>
+    <v-container>
+      <v-row>
+        <v-col
+            v-for="product in products"
+            :key="product"
+            cols="12"
+            md="4"
+        >
+          <v-item>
+<!--            <v-card-->
+<!--                :color="active ? 'primary' : ''"-->
+<!--                class="d-flex align-center"-->
+<!--                dark-->
+<!--                height="200"-->
+<!--                @click="toggle"-->
+<!--            >-->
+             <ProductBox :product="product"/>
+<!--            </v-card>-->
+          </v-item>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-item-group>
   </div>
 </template>
 

@@ -21,6 +21,7 @@ public class ProductDto {
     private String color;
     private String imageURL;
     private String size;
+    private Long file_upload_id;
 //
 //    @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
 //    @JoinColumn(name = "category", nullable = false)

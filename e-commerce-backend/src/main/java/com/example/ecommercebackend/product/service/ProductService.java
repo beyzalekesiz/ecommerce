@@ -34,6 +34,7 @@ public class ProductService {
         product.setColor(productDto.getColor());
         product.setImageURL(productDto.getImageURL());
         product.setSize(productDto.getSize());
+        product.setFileUpload(product.getFileUpload());
         productrepository.save(product);
     }
 

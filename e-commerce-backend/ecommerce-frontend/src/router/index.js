@@ -5,14 +5,15 @@ Vue.use(Vuex);
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
-import RegisterPage from "@/components/RegisterPage";
-import LoginPage from "@/components/LoginPage";
+import RegisterPage from "@/components/User/RegisterPage";
+import LoginPage from "@/components/User/LoginPage";
 import Admin from "@/views/AdminView";
 import AddCategory from "@/components/Category/AddCategory";
 import CategoryPage from "@/components/Category/CategoryPage";
 import AddProduct from "@/components/Product/AddProduct";
-import AdminLogin from "@/components/AdminLogin";
+import AdminLogin from "@/components/User/AdminLogin";
 import ProductPage from "@/components/Product/ProductPage";
+import ListCategoryProducts from "@/components/Category/ListCategoryProducts";
 //import createPersistedState from "vuex-persistedstate";
 //import auth from './index';
 
@@ -53,6 +54,11 @@ const routes = [
     path: '/category',
     name: 'Category',
     component: CategoryPage
+  },
+  {
+    path: '/category/products',
+    name: 'ListCategoryProducts',
+    component: ListCategoryProducts
   },
   {
     path: '/product',

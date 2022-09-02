@@ -4,7 +4,7 @@
     <div class="card-body" >
       <p class="card-title">{{ category.name}}</p>
       <p class="card-text"></p>
-      <a href="#" class="btn btn-primary">See Products</a>
+      <a href="#" class="btn btn-primary" @click="$router.push('/category/products')">See Products</a>
     </div>
   </div>
 </template>

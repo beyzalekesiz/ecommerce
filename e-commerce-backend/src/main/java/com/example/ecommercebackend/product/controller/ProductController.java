@@ -38,7 +38,7 @@ public class ProductController {
 
 
     @PostMapping("/addProduct")
-    public ResponseEntity addProduct(@RequestBody ProductDto productDto) {
+    public ResponseEntity addProduct(@RequestPart ProductDto productDto) {
         productService.addProduct(productDto);
         return ResponseEntity.ok(HttpStatus.OK);
     }

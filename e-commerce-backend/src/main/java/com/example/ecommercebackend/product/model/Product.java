@@ -1,11 +1,10 @@
 package com.example.ecommercebackend.product.model;
 
+import com.example.ecommercebackend.file.model.FileUpload;
 import com.example.ecommercebackend.order.model.Orders;
 import com.fasterxml.jackson.annotation.*;
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,6 +28,7 @@ public class Product implements Serializable {
     //@Basic(optional = false)
     @Column(name = "price")
     private Double price;
+
 
     public Double getPrice() { return price; }
     public void setPrice (Double price) { this.price = price; }
@@ -58,6 +58,8 @@ public class Product implements Serializable {
     @JoinColumn(name = "order_id")
     private Orders order;
 
-
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "file_upload_id")
+    private FileUpload fileUpload;
 
 }
