@@ -61,34 +61,46 @@
     <h1>Welcome</h1> <br>
     <v-row>
 
-      <v-btn>
-        <router-link to="/about"> &nbsp;
+      <v-btn @click="$router.push('about')">
+<!--        <router-link to="/about"> &nbsp;-->
           ABOUT
-        </router-link>
+<!--        </router-link>-->
       </v-btn>
 
+      &nbsp; &nbsp;
+      <v-btn @click="$router.push('register')">
+        <!--        <router-link to="/about"> &nbsp;-->
+        SIGN UP
+        <!--        </router-link>-->
+      </v-btn>
 
-      <router-link to="/register"> &nbsp;
-        Sign Up
-      </router-link>
+      &nbsp; &nbsp;
+      <v-btn @click="$router.push('login')">
+        <!--        <router-link to="/about"> &nbsp;-->
+        SIGN IN
+        <!--        </router-link>-->
+      </v-btn>
 
+      &nbsp; &nbsp;
+      <v-btn @click="$router.push('admin')">
+        <!--        <router-link to="/about"> &nbsp;-->
+        ADMIN PANEL
+        <!--        </router-link>-->
+      </v-btn>
 
-      <router-link to="/login"> &nbsp;
-        Sign In
-      </router-link>
+      &nbsp; &nbsp;
+      <v-btn @click="$router.push('category')">
+        <!--        <router-link to="/about"> &nbsp;-->
+        CATEGORIES
+        <!--        </router-link>-->
+      </v-btn>
 
-
-      <router-link to="/admin"> &nbsp;
-        Admin Panel
-      </router-link>
-
-      <router-link to="/category"> &nbsp;
-        Categories
-      </router-link>
-
-      <router-link to="/product"> &nbsp;
-        Products
-      </router-link>
+      &nbsp; &nbsp;
+      <v-btn @click="$router.push('product')">
+        <!--        <router-link to="/about"> &nbsp;-->
+        PRODUCTS
+        <!--        </router-link>-->
+      </v-btn>
 
     </v-row>
   </div>
