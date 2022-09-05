@@ -32,9 +32,9 @@ public class ProductService {
         product.setPrice(product.getPrice());
         product.setDescription(productDto.getDescription());
         product.setColor(productDto.getColor());
-        product.setImageURL(productDto.getImageURL());
+        product.setImageurl(productDto.getImageurl());
         product.setSize(productDto.getSize());
-        product.setFileUpload(product.getFileUpload());
+//        product.setFileUpload(product.getFileUpload());
         productrepository.save(product);
     }
 

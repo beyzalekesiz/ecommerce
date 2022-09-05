@@ -19,9 +19,8 @@ public class ProductDto {
     private Double price;
     private String description;
     private String color;
-    private String imageURL;
+    private String imageurl;
     private String size;
-    private Long file_upload_id;
 //
 //    @ManyToOne(cascade = CascadeType.REMOVE, optional = false)
 //    @JoinColumn(name = "category", nullable = false)

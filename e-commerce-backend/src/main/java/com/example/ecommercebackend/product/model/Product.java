@@ -36,8 +36,8 @@ public class Product implements Serializable {
     private String size;
     @Column(name = "color")
     private String color;
-    @Column(name = "imageURL")
-    private String imageURL;
+    @Column(name = "imageurl")
+    private String imageurl;
     @Column(name = "description")
     private String description;
 
@@ -58,8 +58,20 @@ public class Product implements Serializable {
     @JoinColumn(name = "order_id")
     private Orders order;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "file_upload_id")
-    private FileUpload fileUpload;
+//    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "file_upload_id")
+//    private FileUpload fileUpload;
+//
+//    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(name = "product_image",
+//            joinColumns = {
+//            @JoinColumn(name = "product_id")
+//            },
+//            inverseJoinColumns = {
+//            @JoinColumn(name = "image_id")
+//            }
+//    )
 
 }
+
+

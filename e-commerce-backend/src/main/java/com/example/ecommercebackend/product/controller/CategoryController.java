@@ -37,6 +37,7 @@ public class CategoryController {
 
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/getAllCategories")
     public List<Category> getAllCategories(){
         List<Category> categories = categoryService.getAllCategories();

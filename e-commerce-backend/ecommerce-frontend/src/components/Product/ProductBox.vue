@@ -18,7 +18,7 @@
       max-width="344"
   >
     <v-img
-        v-bind:src="product.file_upload_id"
+        v-bind:src="product.imageurl"
         height="200px"
     ></v-img>
 

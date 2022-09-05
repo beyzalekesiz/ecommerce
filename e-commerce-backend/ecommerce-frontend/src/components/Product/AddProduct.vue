@@ -2,11 +2,6 @@
   <form @submit.prevent="addProduct">
     <h1>Add Product</h1> <br><br>
 
-    <div>
-      <input type="file" @change="uploadFile" ref="file">
-      <button @click="submitFile">Upload!</button>
-    </div>
-
     <label>Name:</label> &nbsp;
     <input type = "name" required v-model="name"> <br><br>
 
@@ -17,7 +12,7 @@
     <input type = "description" v-model="description"> <br><br>
 
     <label>ImageURL:</label> &nbsp;
-    <input type = "text"  v-model="imageURL"> <br><br>
+    <input type = "text"  v-model="imageurl"> <br><br>
 
     <label>Price:</label> &nbsp;
     <input type = "price"  v-model="price"> <br><br>
@@ -52,7 +47,7 @@ export default {
       name: '',
       color: '',
       description: '',
-      imageURL: '',
+      imageurl: '',
       price: '',
       size: '',
       categories: []
@@ -60,19 +55,7 @@ export default {
   },
 
   methods: {
-    uploadFile() {
-      this.imageURL= this.$refs.file.files[0];
-    },
-    submitFile() {
-      const formData = new FormData();
-      formData.append('imageURL', this.ImageURL);
-      const headers = {'Content-Type': 'multipart/form-data'};
-      axios.post('https://localhost:8080/fileUpload/upload', formData, {headers})
-          .then((res) => {
-        this.imageURL = res.data; // binary representation of the file
-        res.status; // HTTP status
-      });
-    },
+
   async getAllCategories() {
     await axios.get('http://localhost:8080/category/getAllCategories')
         .then(res => this.categories = res.data)
@@ -82,7 +65,7 @@ export default {
     console.log(this.name);
     console.log(this.color);
     console.log(this.description);
-    console.log(this.imageURL);
+    console.log(this.imageurl);
     console.log(this.price);
     console.log(this.size);
     console.log(this.category);
@@ -91,7 +74,7 @@ export default {
       name: this.name,
       color: this.color,
       description: this.description,
-      imageURl: this.imageURL,
+      imageURl: this.imageurl,
       price: this.price,
       size: this.size,
       categoryID: this.category

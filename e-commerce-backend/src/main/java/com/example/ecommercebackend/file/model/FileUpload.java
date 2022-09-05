@@ -24,7 +24,7 @@ public class FileUpload {
 
     private String fileType;
 
-    @OneToOne(mappedBy = "fileUpload", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Product product;
+//    @OneToOne(mappedBy = "fileUpload", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private Product product;
 
 }

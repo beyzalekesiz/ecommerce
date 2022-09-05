@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.MediaType;
 
 import java.util.List;
 @CrossOrigin(origins = "*")
@@ -28,7 +29,6 @@ public class ProductController {
             System.out.println(e.getMessage());
             return null;
         }
-
     }
 
     @GetMapping("/getProductByID/{id}")
@@ -37,8 +37,8 @@ public class ProductController {
     }
 
 
-    @PostMapping("/addProduct")
-    public ResponseEntity addProduct(@RequestPart ProductDto productDto) {
+    @PostMapping(value = {"/addProduct"})
+    public ResponseEntity addProduct(@RequestBody ProductDto productDto) {
         productService.addProduct(productDto);
         return ResponseEntity.ok(HttpStatus.OK);
     }
